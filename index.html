@@ -16,6 +16,10 @@
 <body>
     <div>Playing card suit</div>
 <button type="button" onclick="init()">開始する</button>
+<div class = "container">
+    <audio controls loop>
+        <source src = "musics/ks004.mp3"type="audio/mp3">
+    </audio>
 <div id="webcam-container"></div>
 <div id="label-container"></div>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
@@ -62,22 +66,11 @@
         await predict();
         window.requestAnimationFrame(loop);
     }
-    var status = ""
-    var count = 0
+    
     // run the webcam image through the image model
     async function predict() {
         // predict can take in an image, video or canvas html element
         const prediction = await model.predict(webcam.canvas);
-
-        if(prediction[0].probability.toFixed(2)>=0.80){
-            document.getElementById("ハート.mp3").play();                
-        }else if(prediction[1].probability.toFixed(2)>=0.80){
-            document.getElementById("ダイヤ.mp3").play();                
-        }else if(prediction[2].probability.toFixed(2)>=0.80){
-            document.getElementById("スペード.mp3").play();                
-        }else if(prediction[3].probability.toFixed(2)>=0.80){
-            document.getElementById("クローバー.mp3").play();                
-        }
 
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction =
