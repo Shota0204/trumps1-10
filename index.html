@@ -71,6 +71,8 @@
                 prediction[i].className + ": " + prediction[i].probability.toFixed(2);
             labelContainer.childNodes[i].innerHTML = classPrediction;
         }
+
+        document.getElementById("color")="ハート"
         if(prediction[0].probability.toFixed(2)>=0.80){
             document.getElementById("color")="ハート"
             document.getElementById("color").style.color="red"
