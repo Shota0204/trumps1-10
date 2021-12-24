@@ -72,12 +72,17 @@
             labelContainer.childNodes[i].innerHTML = classPrediction;
         }
 
-        document.getElementById("color")="ハート"
+        var Color=document.getElementById("Color")
         if(prediction[0].probability.toFixed(2)>=0.80){
-            document.getElementById("color")="ハート"
-            document.getElementById("color").style.color="red"
+            Color.innerHTML="<h2 style='color:red'>ハート</h2>";
+        }else if(prediction[1].probability.toFixed(2)>=0.80){
+            Color.innerHTML="<h2 style='color:red'>ダイヤ</h2>";
+        }else if(prediction[2].probability.toFixed(2)>=0.80){
+            Color.innerHTML="<h2 style='color:black'>スペード</h2>";
+        }else if(prediction[3].probability.toFixed(2)>=0.80){
+            Color.innerHTML="<h2 style='color:black'>クローバー</h2>";
         }
-    }
+    
 </script>
 <div id="color"></div>
 
